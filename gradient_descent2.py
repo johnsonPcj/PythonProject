@@ -1,5 +1,5 @@
 # USAGE
-# python 3 gradient_decent.py -w1 8 -w2 12 -b -1
+# python 3 gradient_descent2.py -w1 8 -w2 12 -b -1
 
 import argparse
 import numpy as np
