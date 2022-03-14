@@ -1,3 +1,4 @@
+# USAGE
 # python3 gradient_descent1.py -w 8 -b 20
 import numpy as np
 import argparse
@@ -40,14 +41,14 @@ while True:
     if iltnum == 0:
         ax[0, 0].set_title("Predict vs True value:{} iteration".format(iltnum))
         ax[0, 0].set_xlabel("Area #")
-        ax[0, 0].set_ylabel("House Value")
+        ax[0, 0].set_ylabel("House Price")
         ax[0, 0].plot(x, y_pred, 'r-', label="predict value")
         ax[0, 0].scatter(x, y, color='blue', marker='o', label='true value')
         ax[0, 0].legend()
     elif iltnum == 50:
         ax[0, 1].set_title("Predict vs True value:{} iteration".format(iltnum))
         ax[0, 1].set_xlabel("Area #")
-        ax[0, 1].set_ylabel("House Value")
+        ax[0, 1].set_ylabel("House Price")
         ax[0, 1].plot(x, y_pred, 'r-', label="predict value")
         ax[0, 1].scatter(x, y, color='blue', marker='o', label='true value')
         ax[0, 1].legend()
@@ -61,7 +62,7 @@ while True:
 
 ax[1, 0].set_title("Predict vs True value:{} iteration".format(iltnum))
 ax[1, 0].set_xlabel("Area #")
-ax[1, 0].set_ylabel("House Value")
+ax[1, 0].set_ylabel("House Price")
 ax[1, 0].plot(x, y_pred, 'r-', label="predict value")
 ax[1, 0].scatter(x, y_pred, color='green', marker='X', label="predict value")
 ax[1, 0].scatter(x, y, color='blue', marker='o', label='true value')
