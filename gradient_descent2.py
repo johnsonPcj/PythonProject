@@ -66,7 +66,7 @@ while True:
     if iltnum > 0:
         if loss_value[iltnum] > loss_value[iltnum - 1]:  # if loss value becomes bigger then stop
             break
-        elif round(abs(loss_value[iltnum]), 4) == round(abs(loss_value[iltnum - 1]), 4) \
+        elif round(loss_value[iltnum], 4) == round(loss_value[iltnum - 1], 4) \
                 or (round(abs(grad_w1), 3) <= 0.001 and round(abs(grad_b), 2) <= 0.01):
             break
     iltnum += 1
