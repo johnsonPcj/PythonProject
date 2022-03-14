@@ -38,8 +38,8 @@ plt.style.use("ggplot")
 # for i in range(100):
 while True:
     y_pred = w1 * x1 + w2 * x2 + b  # function,linear regression
-    loss = (y_pred - y) ** 2  # loss function ,is a list,store every y_pred(i)-y(i) loss value,i=[0:m]
-    loss_value.append((0.5 * loss.sum() / m))  # statistics ,calculate all the(y_pred(i)-y(i)) loss values summary
+    loss = (y_pred - y) ** 2  # loss function, is a list, store every y_pred(i)-y(i) loss value,i=[0:m]
+    loss_value.append((0.5 * loss.sum() / m))  # MSE(mean square error) ,all the(y_pred(i)-y(i)) loss values summary
     grad_w1 = 0.5 * np.sum((y_pred - y) * x1) / m  # partial derivative, calculate gradient for w1
     grad_w2 = 0.5 * np.sum((y_pred - y) * x2) / m  # partial derivative, calculate gradient for w2
     grad_b = 0.5 * np.sum(y_pred - y) / m  # partial calculus, calculate gradient for b
@@ -52,14 +52,14 @@ while True:
     if iltnum == 0:
         ax[0, 0].set_title("Predict vs True value:{} iteration".format(iltnum))
         ax[0, 0].set_xlabel("Area #")
-        ax[0, 0].set_ylabel("House Value")
+        ax[0, 0].set_ylabel("House price")
         ax[0, 0].scatter(x1, y_pred, color='red', marker='X', label="predict value")
         ax[0, 0].scatter(x1, y, color='blue', marker='o', label='true value')
         ax[0, 0].legend()
     elif iltnum == 50:
         ax[0, 1].set_title("Predict vs True value:{} iteration".format(iltnum))
         ax[0, 1].set_xlabel("Area #")
-        ax[0, 1].set_ylabel("House Value")
+        ax[0, 1].set_ylabel("House price")
         ax[0, 1].scatter(x1, y_pred, color='red', marker='X', label="predict value")
         ax[0, 1].scatter(x1, y, color='blue', marker='o', label='true value')
         ax[0, 1].legend()
@@ -74,7 +74,7 @@ print(w1, w2, b)
 
 ax[1, 0].set_title("Predict vs True value:{} iteration".format(iltnum))
 ax[1, 0].set_xlabel("Area #")
-ax[1, 0].set_ylabel("House Value")
+ax[1, 0].set_ylabel("House price")
 ax[1, 0].scatter(x1, y_pred, color='red', marker='X', label="predict value")
 ax[1, 0].scatter(x1, y, color='blue', marker='o', label='true value')
 ax[1, 0].legend()
