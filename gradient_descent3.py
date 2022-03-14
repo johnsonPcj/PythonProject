@@ -45,16 +45,16 @@ plt.style.use("ggplot")
 # for i in range(100):
 while True:
     y_pred = w1 * x1 + w2 * x2 + w3 * x3 + b  # function,linear regression
-    loss = (y_pred - y) ** 2  # loss function ,is a list,store every y_pred(i)-y(i) loss value,i=[0:m]
-    loss_value.append((0.5 * loss.sum() / m))  # statistics ,calculate all the(y_pred(i)-y(i)) loss values summary
-    grad_w1 = 0.5 * np.sum((y_pred - y) * x1) / m  # partial calculus, calculate gradient for w1
-    grad_w2 = 0.5 * np.sum((y_pred - y) * x2) / m  # partial calculus, calculate gradient for w2
-    grad_w3 = 0.5 * np.sum((y_pred - y) * x3) / m  # partial calculus, calculate gradient for w2
-    grad_b = 0.5 * np.sum(y_pred - y) / m  # partial calculus, calculate gradient for b
+    loss = (y_pred - y) ** 2  # loss function ,a list store every y_pred(i)-y(i) loss value,i=[0:m]
+    loss_value.append((0.5 * loss.sum() / m))  # MSE ,all the(y_pred(i)-y(i)) loss values summary
+    grad_w1 = 0.5 * np.sum((y_pred - y) * x1) / m  # partial derivative, gradient for w1
+    grad_w2 = 0.5 * np.sum((y_pred - y) * x2) / m  # partial derivative, gradient for w2
+    grad_w3 = 0.5 * np.sum((y_pred - y) * x3) / m  # partial derivative, gradient for w3
+    grad_b = 0.5 * np.sum(y_pred - y) / m  # partial derivative, gradient for b
     w1 -= learn_rate1 * grad_w1  # gradient descent for w1 , from gradient decent direction to  get the next w1
     w2 -= learn_rate2 * grad_w2  # gradient descent for w2 , from gradient decent direction to  get the next w2
-    w3 -= learn_rate2 * grad_w3
-    b -= learn_rate2 * grad_b  # gradient descent for b , from gradient decent direction to  get the next b
+    w3 -= learn_rate2 * grad_w3  # gradient descent for w2 , from gradient decent direction to  get the next w3
+    b -= learn_rate2 * grad_b    # gradient descent for b , from gradient decent direction to  get the next b
 
     print(
         "%-7d:loss %-6.3f, grad_w1:%-8.4f,grad_w2:%-8.4f,grad_w3:%-8.4f,grad_b:%-8.5f ,(w1,w2,w3,b):%-5.2f %-5.2f "
