@@ -5,9 +5,9 @@ import argparse
 from matplotlib import pyplot as plt
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-w", type=float, default=8,
+ap.add_argument("-w", type=float, default=9,
                 help="coefficient w initial ")
-ap.add_argument("-b", type=float, default=20,
+ap.add_argument("-b", type=float, default=40,
                 help="coefficient b initial")
 
 args = vars(ap.parse_args())
@@ -36,7 +36,7 @@ while True:
     w -= learningRate * grad_w  # follow gradient descent direction to  get the next w
     b -= learningRate * grad_b  # follow gradient descent direction to  get the next b
 
-    print("%-7d:loss %-6.3f, grad_w:%-10.4f,grad_b:%-10.5f ,(w,b):%-7.2f %-7.2f" \
+    print("%-7d:loss %-6.4f, grad_w:%-10.4f,grad_b:%-10.5f ,(w,b):%-7.2f %-7.2f" \
           % (iltnum, loss_value[iltnum], grad_w, grad_b, w, b))
     if iltnum == 0:
         ax[0, 0].set_title("Predict vs True value:{} iteration".format(iltnum))
@@ -55,7 +55,7 @@ while True:
     if iltnum > 0:
         if loss_value[iltnum] > loss_value[iltnum - 1]:  # if loss value becomes bigger then stop
             break
-        elif round(loss_value[iltnum], 4) == round(loss_value[iltnum - 1], 4) \
+        elif round(loss_value[iltnum], 5) == round(loss_value[iltnum - 1], 5) \
                 or (round(abs(grad_w), 3) <= 0.001 and round(abs(grad_b), 2) <= 0.01):
             break
     iltnum += 1
