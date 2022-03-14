@@ -40,12 +40,12 @@ while True:
     y_pred = w1 * x1 + w2 * x2 + b  # function,linear regression
     loss = (y_pred - y) ** 2  # loss function ,is a list,store every y_pred(i)-y(i) loss value,i=[0:m]
     loss_value.append((0.5 * loss.sum() / m))  # statistics ,calculate all the(y_pred(i)-y(i)) loss values summary
-    grad_w1 = 0.5 * np.sum((y_pred - y) * x1) / m  # partial calculus, calculate gradient for w1
-    grad_w2 = 0.5 * np.sum((y_pred - y) * x2) / m  # partial calculus, calculate gradient for w2
+    grad_w1 = 0.5 * np.sum((y_pred - y) * x1) / m  # partial derivative, calculate gradient for w1
+    grad_w2 = 0.5 * np.sum((y_pred - y) * x2) / m  # partial derivative, calculate gradient for w2
     grad_b = 0.5 * np.sum(y_pred - y) / m  # partial calculus, calculate gradient for b
-    w1 -= learn_rate1 * grad_w1  # gradient decent for w1 , from gradient decent direction to  get the next w1
-    w2 -= learn_rate2 * grad_w2  # gradient decent for w2 , from gradient decent direction to  get the next w2
-    b -= learn_rate2 * grad_b  # gradient decent for b , from gradient decent direction to  get the next b
+    w1 -= learn_rate1 * grad_w1  # gradient descent for w1 , from gradient descent direction to  get the next w1
+    w2 -= learn_rate2 * grad_w2  # follow gradient descent direction to  get the next w2
+    b -= learn_rate2 * grad_b  # follow gradient descent direction to  get the next b
 
     print("%-7d:loss %-6.3f, grad_w1:%-10.4f,grad_w2:%-10.4f,grad_b:%-10.5f ,(w1,w2,b):%-7.2f %-7.2f %-7.2f" \
           % (iltnum, loss_value[iltnum], grad_w1, grad_w2, grad_b, w1, w2, b))
