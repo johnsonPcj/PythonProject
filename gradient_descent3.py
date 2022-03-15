@@ -23,13 +23,13 @@ w2 = args["w2"]  # 12,15, 49350
 w3 = args["w3"]  # 12,15, 49350
 b = args["b"]  # -1,-10, -100533.75
 
-df1 = pd.read_excel('house_value.xlsx')  # read first sheet of xlsx
+data = pd.read_excel('house_value.xlsx')  # read first sheet of xlsx
 # x1 = np.array([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
-x1 = np.array(df1.iloc[:, 0].values)  # house area
-x2 = np.array(df1.iloc[:, 1].values / 1000)  # average income
-x3 = np.array(df1.iloc[:, 2].values)  # house years
+x1 = np.array(data.iloc[:, 0].values)  # house area
+x2 = np.array(data.iloc[:, 1].values / 1000)  # average income
+x3 = np.array(data.iloc[:, 2].values)  # house years
 # y = np.array([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])
-y = np.array(df1.iloc[:, 3].values / 1000)  #house price
+y = np.array(data.iloc[:, 3].values / 1000)  #house price
 
 m = x1.size
 
