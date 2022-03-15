@@ -1,7 +1,9 @@
 # USAGE
 # python3 gradient_descent1.py -w 8 -b 20
-import numpy as np
+
 import argparse
+import pandas as pd
+import numpy as np
 from matplotlib import pyplot as plt
 
 ap = argparse.ArgumentParser()
@@ -14,12 +16,15 @@ args = vars(ap.parse_args())
 w = args["w"]  # 8,10,10264
 b = args["b"]  # -1,-10, -100533.75
 
-m = 11
-x = np.array([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
-y = np.array([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])
+data = pd.read_excel('house_value.xlsx')  # read first sheet of xlsx
+# x = np.array([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
+x = np.array(data.iloc[:, 0].values)  # house area
+# y = np.array([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])
+y = np.array(data.iloc[:, 3].values / 1000)  #house price
 # y is house value, unit is kRMB
+m = x.size
 
-learningRate = 0.0004
+learningRate = 0.0001
 iltnum = 0
 loss_value = []
 
