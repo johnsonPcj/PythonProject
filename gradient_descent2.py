@@ -79,9 +79,7 @@ ax[1, 0].scatter(x1, y_pred, color='red', marker='X', label="predict value")
 ax[1, 0].scatter(x1, y, color='blue', marker='o', label='true value')
 ax[1, 0].legend()
 
-x = []
-for i in range(iltnum + 1):
-    x.append(i)
+x = [i for i in range(iltnum + 1)]
 x = np.array(x)
 ax[1, 1].set_title("loss value curve:{} iteration".format(iltnum))
 ax[1, 1].set_xlabel("iltnum #")
