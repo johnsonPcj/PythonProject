@@ -48,17 +48,16 @@ def linear_regression(args, ax):
     """
     y = np.array(data.iloc[:, 1].values)
 
-    # loss_value is a list stores MSE(mean square error) value every prediction iterationuse
-    loss_value = []
+    y_pred = []  # y_pred is a list stores regression value of each learning
+    loss_value = []  # loss_value is a list stores MSE value of each learning
     m = x.size
 
     learn_rate = 0.0004
     iltnum = 0
 
     while True:
-        y_pred = w * x + b
-        loss = (y_pred - y) ** 2  # function,linear regression
-        # loss function ,is a list,store every y_pred(i)-y(i) loss value,i=[0:m]
+        y_pred = w * x + b  # prediction function, a list store values of house regression price
+        loss = (y_pred - y) ** 2  # loss function,a list store every y_pred(i)-y(i) loss value,i=[0:m]
         loss_value.append((0.5 * loss.sum() / m))
 
         grad_w = 0.5 * np.sum((y_pred - y) * x) / m  # partial calculus, calculate gradient for w
