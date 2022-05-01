@@ -7,7 +7,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 
-# construct the argument parse and parse the arguments
+# construct the argument parse to get the arguments
 def get_argument():
     ap = argparse.ArgumentParser()
     ap.add_argument("-w", type=float, default=8,
