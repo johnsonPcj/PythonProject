@@ -48,7 +48,7 @@ def linear_regression(args, ax):
     """
     y = np.array(data.iloc[:, 1].values)
 
-    y_pred = []  # prediction function is a list stores regression value of each learning
+    y_pred = []  # prediction function, is a list stores regression value of each learning
     loss_value = []  # loss_value is a list stores MSE value of each learning
     m = x.size
 
@@ -62,8 +62,8 @@ def linear_regression(args, ax):
 
         grad_w = 0.5 * np.sum((y_pred - y) * x) / m  # partial calculus, calculate gradient for w
         grad_b = 0.5 * np.sum(y_pred - y) / m  # partial calculus, calculate gradient for b
-        w -= learn_rate * grad_w  # gradient decent for w , from gradient decent direction to  get the next w
-        b -= learn_rate * grad_b  # gradient decent for b , from gradient decent direction to  get the next b
+        w -= learn_rate * grad_w  # from gradient decent direction to  get the next w
+        b -= learn_rate * grad_b  # from gradient decent direction to  get the next b
 
         print("%-7d:loss %-12.3f, grad_w:%-10.3f,grad_b:%-10.3f ,(w,b):%-7.2f %-7.2f" \
               % (iltnum, loss_value[iltnum], grad_w, grad_b, w, b))
