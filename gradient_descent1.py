@@ -40,16 +40,15 @@ def plot_fig1and2(ax, x, y, y_pred, iltnum):
 def linear_regression(args, ax):
     w = args["w"]  # 8
     b = args["b"]  # 40
-    data = pd.read_excel('house_value_1.xlsx')  # read first sheet of xlsx
-    # x is a list of house area,x = np.array([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
+    data = pd.read_excel('house_value_1.xlsx')  # read house data from excel file
+    # x is a list stores house area,e.g([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
     x = np.array(data.iloc[:, 0].values)
-    """y is a list of house value
-        y = np.array([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])
+    """y is a list stores house value,
+       e.g([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])
     """
     y = np.array(data.iloc[:, 1].values)
 
-    """use mean square error(MSE) as loss function,
-    loss_value is a list stores MSE every prediction iteration"""
+    # loss_value is a list stores MSE(mean square error) value every prediction iterationuse
     loss_value = []
     m = x.size
 
