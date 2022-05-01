@@ -48,7 +48,7 @@ def linear_regression(args, ax):
     """
     y = np.array(data.iloc[:, 1].values)
 
-    y_pred = []  # y_pred is a list stores regression value of each learning
+    y_pred = []  # prediction function is a list stores regression value of each learning
     loss_value = []  # loss_value is a list stores MSE value of each learning
     m = x.size
 
@@ -56,7 +56,7 @@ def linear_regression(args, ax):
     iltnum = 0
 
     while True:
-        y_pred = w * x + b  # prediction function, a list store values of house regression price
+        y_pred = w * x + b  # a list store values of house regression price
         loss = (y_pred - y) ** 2  # loss function,a list store every y_pred(i)-y(i) loss value,i=[0:m]
         loss_value.append((0.5 * loss.sum() / m))
 
@@ -75,7 +75,6 @@ def linear_regression(args, ax):
                 break
         iltnum += 1
         plot_fig1and2(ax, x, y, y_pred, iltnum)
-    print("w=", w, ",b=", b)
     plot_regression_fig(ax[1, 0], x, y, y_pred, iltnum)
 
     # plot sub-figure of loss_value list
