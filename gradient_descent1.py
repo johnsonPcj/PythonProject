@@ -40,19 +40,18 @@ def plot_fig1and2(ax, x, y, y_pred, iltnum):
 
 
 def linear_regression(w, b, loop, ax):
-    data = pd.read_excel('house_value_1.xlsx')  # read house data from excel file
+    data = pd.read_excel('house_data_1.xlsx')  # read house data from excel file
     # x is a list stores house area,e.g([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
     x = np.array(data.iloc[:, 0].values)
-    #y is a list stores house value,
-    y = np.array(data.iloc[:, 1].values)
+    y = np.array(data.iloc[:, 1].values)  # y is a list stores house value,
     loss_value = []  # loss_value is a list stores MSE value of each learning
     m = x.size
     learn_rate = 0.0004
     iltnum = 0
-    y_pred = []  # prediction function is a list stores regression value of each learning
+    y_pred = []  # prediction function,a list stores regression value of each learning
     while True:
         y_pred = w * x + b  # a list store values of house regression price
-        loss = (y_pred - y) ** 2  # loss function,a list store every y_pred(i)-y(i) loss value,i=[0:m]
+        loss = (y_pred - y) ** 2  # loss function,a list store every y_pred(i)-y(i),i=[0:m]
         loss_value.append((0.5 * loss.sum() / m))
         grad_w = 0.5 * np.sum((y_pred - y) * x) / m  # calculate gradient for w
         grad_b = 0.5 * np.sum(y_pred - y) / m  # calculate gradient for b
@@ -63,14 +62,14 @@ def linear_regression(w, b, loop, ax):
               % (iltnum, loss_value[iltnum], grad_w, grad_b, w, b))
         if loop == 0:
             if iltnum > 0:
-                if loss_value[iltnum] > loss_value[iltnum - 1]:  # if loss value becomes bigger then stop
+                if loss_value[iltnum] > loss_value[iltnum - 1]:  # if loss value bigger then stop
                     break
                 elif round(abs(loss_value[iltnum]), 4) == round(abs(loss_value[iltnum - 1]), 4) \
                         or (round(abs(grad_w), 3) <= 0.001 and round(abs(grad_b), 2) <= 0.01):
                     print("learning end after small loss value")
                     break
         elif iltnum > loop:
-            print("learning end after: %d iteration" % iltnum)
+            print("learning end after: %d iterations" % iltnum)
             break
 
         iltnum += 1
