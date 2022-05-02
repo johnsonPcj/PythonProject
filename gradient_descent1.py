@@ -22,12 +22,12 @@ def get_argument():
 
 
 def plot_regression_fig(sub_ax, x, y, y_pred, iteration):
-    sub_ax.set_title("Predict vs True value:{} iteration".format(iteration))
+    sub_ax.set_title("Predict vs True Price:{} iteration".format(iteration))
     sub_ax.set_xlabel("Area #")
-    sub_ax.set_ylabel("House Value")
+    sub_ax.set_ylabel("House Price")
     sub_ax.plot(x, y_pred, "r-", label="predict line")
-    sub_ax.scatter(x, y_pred, color='purple', marker='X', label="predict value")
-    sub_ax.scatter(x, y, color='blue', marker='o', label='true value')
+    sub_ax.scatter(x, y_pred, color='purple', marker='X', label="predict price")
+    sub_ax.scatter(x, y, color='blue', marker='o', label='true price')
     sub_ax.legend()
 
 
@@ -43,7 +43,7 @@ def linear_regression(w, b, loop, ax):
     data = pd.read_excel('house_data_1.xlsx')  # read house data from excel file
     # x is a list stores house area,e.g([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
     x = np.array(data.iloc[:, 0].values)
-    y = np.array(data.iloc[:, 1].values)  # y is a list stores house value,
+    y = np.array(data.iloc[:, 1].values)  # y is a list stores true house price
     loss_value = []  # loss_value is a list stores MSE value of each learning
     m = x.size
     learn_rate = 0.0004
