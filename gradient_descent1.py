@@ -106,7 +106,7 @@ if __name__ == '__main__':
     loop = args["l"]  # 0
     # create a new figure for the prediction
     plt.style.use("ggplot")
-    (fig, ax) = plt.subplots(2, 2, figsize=(12, 8))
+    (fig, ax) = plt.subplots(2, 2, figsize=(12, 6))
     linear_regression(w, b, loop, ax)
 
     plt.tight_layout()
