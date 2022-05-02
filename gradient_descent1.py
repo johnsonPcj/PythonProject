@@ -43,14 +43,10 @@ def linear_regression(w, b, loop, ax):
     data = pd.read_excel('house_value_1.xlsx')  # read house data from excel file
     # x is a list stores house area,e.g([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])
     x = np.array(data.iloc[:, 0].values)
-    """y is a list stores house value,
-       e.g([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])
-    """
+    #y is a list stores house value,
     y = np.array(data.iloc[:, 1].values)
-
     loss_value = []  # loss_value is a list stores MSE value of each learning
     m = x.size
-
     learn_rate = 0.0004
     iltnum = 0
     y_pred = []  # prediction function is a list stores regression value of each learning
@@ -58,11 +54,10 @@ def linear_regression(w, b, loop, ax):
         y_pred = w * x + b  # a list store values of house regression price
         loss = (y_pred - y) ** 2  # loss function,a list store every y_pred(i)-y(i) loss value,i=[0:m]
         loss_value.append((0.5 * loss.sum() / m))
-
         grad_w = 0.5 * np.sum((y_pred - y) * x) / m  # calculate gradient for w
         grad_b = 0.5 * np.sum(y_pred - y) / m  # calculate gradient for b
-        w -= learn_rate * grad_w  # gradient decent for w , from gradient decent direction to  get the next w
-        b -= learn_rate * grad_b  # gradient decent for b , from gradient decent direction to  get the next b
+        w -= learn_rate * grad_w  # from gradient decent direction to  get the next w
+        b -= learn_rate * grad_b  # from gradient decent direction to  get the next b
 
         print("%-7d:loss %-12.3f, grad_w:%-10.3f,grad_b:%-10.3f ,(w,b):%-7.2f %-7.2f" \
               % (iltnum, loss_value[iltnum], grad_w, grad_b, w, b))
