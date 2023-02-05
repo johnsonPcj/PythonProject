@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b2a382e2-4d4b-495f-9c66-99068fd5a16d" name="Changes" comment="add differential equation code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="b2a382e2-4d4b-495f-9c66-99068fd5a16d" name="Changes" comment="modify gradient_descent1">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PythonProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/differential equation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LinearRegression_w8.0_b40.0.png" beforeDir="false" afterPath="$PROJECT_DIR$/LinearRegression_w8.0_b40.0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LinearRegression_w9.0_b40.0.png" beforeDir="false" afterPath="$PROJECT_DIR$/LinearRegression_w9.0_b40.0.png" afterDir="false" />
+>>>>>>> origin/master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +56,11 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Python.gradient_descent1">
+=======
+  <component name="RunManager" selected="Python.differential equation">
+>>>>>>> origin/master
     <configuration name="differential equation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,6 +145,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,6 +172,12 @@
         <item itemvalue="Python.gradient_descent1" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.differential equation" />
+=======
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.differential equation" />
+        <item itemvalue="Python.gradient_descent1" />
+>>>>>>> origin/master
         <item itemvalue="Python.gradient_descent2" />
         <item itemvalue="Python.gradient_descent3" />
       </list>
@@ -239,6 +262,7 @@
       <option name="project" value="LOCAL" />
       <updated>1651517838857</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00011" summary="add differential equation code">
       <created>1675627215162</created>
       <option name="number" value="00011" />
@@ -254,6 +278,9 @@
       <updated>1675627253879</updated>
     </task>
     <option name="localTasksCounter" value="13" />
+=======
+    <option name="localTasksCounter" value="11" />
+>>>>>>> origin/master
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -272,7 +299,11 @@
     <MESSAGE value="modify variable name" />
     <MESSAGE value="modify gradient_descent1.py using pandas to read data" />
     <MESSAGE value="modify gradient_descent1" />
+<<<<<<< HEAD
     <MESSAGE value="add differential equation code" />
     <option name="LAST_COMMIT_MESSAGE" value="add differential equation code" />
+=======
+    <option name="LAST_COMMIT_MESSAGE" value="modify gradient_descent1" />
+>>>>>>> origin/master
   </component>
 </project>
