@@ -1,0 +1,29 @@
+Index: gradient_descent1.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># USAGE\r\n# python gradient_descent1.py -w 8 -b 40\r\n\r\nimport argparse\r\nimport numpy as np\r\nimport pandas as pd\r\nfrom matplotlib import pyplot as plt\r\n\r\n\r\n# construct the argument parse and parse the arguments\r\ndef get_argument():\r\n    ap = argparse.ArgumentParser()\r\n    ap.add_argument(\"-w\", type=float, default=8,\r\n                    help=\"coefficient w initial \")\r\n    ap.add_argument(\"-b\", type=float, default=40,\r\n                    help=\"coefficient b initial\")\r\n\r\n    args = vars(ap.parse_args())\r\n    return args\r\n\r\n\r\ndef plot_regression_fig(sub_ax, x, y, y_pred, iteration):\r\n    sub_ax.set_title(\"Predict vs True value:{} iteration\".format(iteration))\r\n    sub_ax.set_xlabel(\"Area #\")\r\n    sub_ax.set_ylabel(\"House Value\")\r\n    sub_ax.plot(x, y_pred, \"r-\", label=\"predict line\")\r\n    sub_ax.scatter(x, y_pred, color='purple', marker='X', label=\"predict value\")\r\n    sub_ax.scatter(x, y, color='blue', marker='o', label='true value')\r\n    sub_ax.legend()\r\n\r\n\r\ndef plot_fig1and2(ax, x, y, y_pred, iltnum):\r\n    if iltnum == 1:\r\n        plot_regression_fig(ax[0, 0], x, y, y_pred, iltnum)\r\n\r\n    elif iltnum == 50:\r\n        plot_regression_fig(ax[0, 1], x, y, y_pred, iltnum)\r\n\r\n\r\ndef linear_regression(args, ax):\r\n    w = args[\"w\"]  # 8\r\n    b = args[\"b\"]  # 40\r\n    data = pd.read_excel('house_value_1.xlsx')  # read first sheet of xlsx\r\n    # x is a list of house area,x = np.array([68, 95, 102, 130, 60, 45, 30, 80, 120, 113, 150])\r\n    x = np.array(data.iloc[:, 0].values)\r\n    \"\"\"y is a list of house value\r\n        y = np.array([714.592, 956.877, 1153.582, 1293.667, 600.000, 520.000, 280.000, 845.000, 1150.000, 1120.000, 1490.234])\r\n    \"\"\"\r\n    y = np.array(data.iloc[:, 1].values)\r\n\r\n    \"\"\"use mean square error(MSE) as loss function,\r\n    loss_value is a list stores MSE every prediction iteration\"\"\"\r\n    loss_value = []\r\n    m = x.size\r\n\r\n    learn_rate = 0.0004\r\n    iltnum = 0\r\n\r\n    while True:\r\n        y_pred = w * x + b\r\n        loss = (y_pred - y) ** 2  # function,linear regression\r\n        # loss function ,is a list,store every y_pred(i)-y(i) loss value,i=[0:m]\r\n        loss_value.append((0.5 * loss.sum() / m))\r\n\r\n        grad_w = 0.5 * np.sum((y_pred - y) * x) / m  # partial calculus, calculate gradient for w\r\n        grad_b = 0.5 * np.sum(y_pred - y) / m  # partial calculus, calculate gradient for b\r\n        w -= learn_rate * grad_w  # gradient decent for w , from gradient decent direction to  get the next w\r\n        b -= learn_rate * grad_b  # gradient decent for b , from gradient decent direction to  get the next b\r\n\r\n        print(\"%-7d:loss %-12.3f, grad_w:%-10.3f,grad_b:%-10.3f ,(w,b):%-7.2f %-7.2f\" \\\r\n              % (iltnum, loss_value[iltnum], grad_w, grad_b, w, b))\r\n        if iltnum > 0:\r\n            if loss_value[iltnum] > loss_value[iltnum - 1]:  # if loss value becomes bigger then stop\r\n                break\r\n            elif round(abs(loss_value[iltnum]), 4) == round(abs(loss_value[iltnum - 1]), 4) \\\r\n                    or (round(abs(grad_w), 3) <= 0.001 and round(abs(grad_b), 2) <= 0.01):\r\n                break\r\n        iltnum += 1\r\n        plot_fig1and2(ax, x, y, y_pred, iltnum)\r\n    print(\"w=\", w, \",b=\", b)\r\n    plot_regression_fig(ax[1, 0], x, y, y_pred, iltnum)\r\n\r\n    # plot sub-figure of loss_value list\r\n    x = []\r\n    for i in range(iltnum + 1):\r\n        x.append(i)\r\n    x = np.array(x)\r\n    ax[1, 1].set_title(\"loss value curve:{} iteration\".format(iltnum))\r\n    ax[1, 1].set_xlabel(\"iltnum #\")\r\n    ax[1, 1].set_ylabel(\"loss Value\")\r\n    function = \"f(x)={} *x + {}\".format(round(w, 3), round(b, 3))\r\n    ax[1, 1].plot(x, loss_value, color='purple',\r\n                  label=function + f\"\\nInitial Predict Coefficient(w0,b0):({args['w']},{args['b']})\" \\\r\n                        + f\"\\nlearn rate = {learn_rate}\" \\\r\n                        + f\"\\nLoss value Maximum = {round(loss_value[0], 1)},Minimum = {round(loss_value[iltnum], 1)}\")\r\n\r\n    ax[1, 1].legend()\r\n\r\n\r\nif __name__ == '__main__':\r\n    args = get_argument()\r\n    # create a new figure for the prediction\r\n    plt.style.use(\"ggplot\")\r\n    (fig, ax) = plt.subplots(2, 2, figsize=(12, 8))\r\n    linear_regression(args, ax)\r\n\r\n    plt.tight_layout()\r\n    plt.savefig(\"LinearRegression_w{}_b{}.png\".format(args[\"w\"], args[\"b\"]))\r\n    plt.show()\r\n    plt.close()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradient_descent1.py b/gradient_descent1.py
+--- a/gradient_descent1.py	
++++ b/gradient_descent1.py	
+@@ -7,7 +7,7 @@
+ from matplotlib import pyplot as plt
+ 
+ 
+-# construct the argument parse and parse the arguments
++# construct the argument parse to get arguments
+ def get_argument():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("-w", type=float, default=8,
+@@ -48,8 +48,7 @@
+     """
+     y = np.array(data.iloc[:, 1].values)
+ 
+-    """use mean square error(MSE) as loss function,
+-    loss_value is a list stores MSE every prediction iteration"""
++    # use (MSE) as loss function,loss_value is a list stores MSE(mean square error) every prediction iteration
+     loss_value = []
+     m = x.size
+ 
